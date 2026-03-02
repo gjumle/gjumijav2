@@ -1,89 +1,179 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Tady si pak vyměníš odkazy za svoje fotky
-const portfolioItems = [
-  { id: 1, category: "Automotive", src: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop", alt: "Sportovní auto v noci" },
-  { id: 2, category: "Lifestyle", src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop", alt: "Móda a lifestyle" },
-  { id: 3, category: "Nature", src: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800&auto=format&fit=crop", alt: "Příroda a hory" },
-  { id: 4, category: "Automotive", src: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop", alt: "Detail auta" },
-  { id: 5, category: "Portrait", src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop", alt: "Portrét dívky" },
-  { id: 6, category: "Brno", src: "https://images.unsplash.com/photo-1563503657321-4d1d9111c479?q=80&w=800&auto=format&fit=crop", alt: "Město večer" },
+// --- DATA (Později nahradíme reálnými daty nebo API) ---
+
+const instagramPosts = [
+  { id: 1, src: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800&auto=format&fit=crop", alt: "Car detail" },
+  { id: 2, src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=800&auto=format&fit=crop", alt: "Nature morning" },
+  { id: 3, src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop", alt: "Lifestyle fashion" },
+  { id: 4, src: "https://images.unsplash.com/photo-1493238792015-164e850196c8?q=80&w=800&auto=format&fit=crop", alt: "Workspace" },
 ];
+
+const projects = [
+  { 
+    id: 1, 
+    title: "BMW M4 Competition", 
+    category: "Automotive", 
+    desc: "Noční editorial v ulicích Brna.",
+    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop" 
+  },
+  { 
+    id: 2, 
+    title: "Summer Vibes 24", 
+    category: "Lifestyle", 
+    desc: "Kampaň pro lokální fashion brand.",
+    image: "https://images.unsplash.com/photo-1506645292803-db782f6c3124?q=80&w=1200&auto=format&fit=crop" 
+  },
+];
+
+const references = [
+  { id: 1, name: "Jan Novák", role: "CEO, AutoBrno", text: "Leoš má neuvěřitelný cit pro detail. Fotky auta vypadají lépe než ve skutečnosti." },
+  { id: 2, name: "Petra Svobodová", role: "Influencer", text: "Rychlá domluva a fotky, které na Instagramu trhají rekordy. Díky!" },
+];
+
+// --- KOMPONENTY ---
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <main className="min-h-screen flex flex-col">
       
-      {/* HERO SEKCE */}
-      <section className="w-full h-[80vh] flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
-        <div className="z-10 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white">
-            LEOŠ GJUMIJA
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-400 font-light tracking-widest uppercase">
-            Photography
-          </p>
-          <div className="flex gap-4 justify-center mt-8 text-sm text-gray-500">
-            <span>AUTOMOTIVE</span>
-            <span>•</span>
-            <span>LIFESTYLE</span>
-            <span>•</span>
-            <span>NATURE</span>
+      {/* 1. NAVIGACE (Sticky & Minimal) */}
+      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-neutral-100">
+        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+          <span className="font-bold text-xl tracking-tight">gjumija.photos</span>
+          <div className="hidden md:flex gap-8 text-sm font-medium text-neutral-500">
+            <Link href="#projects" className="hover:text-black transition-colors">Projekty</Link>
+            <Link href="#references" className="hover:text-black transition-colors">Reference</Link>
+            <Link href="#contact" className="hover:text-black transition-colors">Kontakt</Link>
           </div>
-        </div>
-
-        {/* Pozadí Hero sekce - jemný gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950 z-0" />
-      </section>
-
-      {/* O MNĚ SEKCE */}
-      <section className="max-w-2xl px-6 py-20 text-center text-gray-300 leading-relaxed">
-        <p className="text-lg">
-          Jsem fotograf z <strong>Brna</strong>. Zachycuji momenty, stroje a atmosféru.
-          Mým cílem je tvořit vizuály, které mají hloubku a příběh.
-          <br /><br />
-          Hledáte fotografa pro svůj projekt nebo jen chcete kvalitní fotky na sítě?
-        </p>
-        <div className="mt-8">
-           <Link 
+          <Link 
             href="https://instagram.com/gjumija.photos" 
             target="_blank"
-            className="border border-white/20 px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
-           >
-             Napsat mi na Instagramu
-           </Link>
+            className="bg-black text-white text-xs px-4 py-2 rounded-full font-medium hover:bg-neutral-800 transition-colors"
+          >
+            Follow on IG
+          </Link>
+        </div>
+      </nav>
+
+      {/* 2. HERO SEKCE (Clean typography) */}
+      <section className="pt-40 pb-20 px-6 max-w-6xl mx-auto w-full">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6">
+          Visual storyteller<br />
+          based in Brno.
+        </h1>
+        <p className="text-xl text-neutral-500 max-w-xl leading-relaxed">
+          Fotograf se zaměřením na automotive, lifestyle a přírodu. 
+          Vytvářím vizuální obsah, který prodává a vypráví příběh.
+        </p>
+      </section>
+
+      {/* 3. INSTAGRAM GRID (Rounded & Strict) */}
+      <section className="px-6 max-w-6xl mx-auto w-full mb-32">
+        <div className="flex justify-between items-end mb-8">
+          <h2 className="text-2xl font-semibold tracking-tight">Latest Shots</h2>
+          <a href="https://instagram.com/gjumija.photos" className="text-sm text-neutral-400 hover:text-black transition-colors">@gjumija.photos ↗</a>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {instagramPosts.map((post) => (
+            <div key={post.id} className="aspect-square relative overflow-hidden rounded-3xl group bg-neutral-100">
+              <Image
+                src={post.src}
+                alt={post.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* GALERIE (MASONRY GRID) */}
-      <section className="w-full max-w-7xl px-4 pb-20">
-        <h2 className="text-2xl font-bold mb-8 text-center md:text-left ml-2">Vybrané práce</h2>
+      {/* 4. PROJEKTY (Large Cards) */}
+      <section id="projects" className="px-6 max-w-6xl mx-auto w-full mb-32">
+        <h2 className="text-2xl font-semibold tracking-tight mb-8">Vybrané projekty</h2>
         
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-          {portfolioItems.map((item) => (
-            <div key={item.id} className="break-inside-avoid relative group overflow-hidden rounded-lg">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                width={800}
-                height={600}
-                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                unoptimized // Pro externí Unsplash linky, u tvých fotek to pak smažeme
-              />
-              {/* Overlay s kategorií při najetí myší */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-light tracking-widest uppercase">{item.category}</span>
+        <div className="space-y-12">
+          {projects.map((project) => (
+            <div key={project.id} className="group cursor-pointer">
+              <div className="relative w-full h-[60vh] overflow-hidden rounded-[2rem] bg-neutral-100 mb-6">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+              </div>
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-3xl font-bold tracking-tight mb-1 group-hover:underline decoration-2 underline-offset-4">{project.title}</h3>
+                  <p className="text-neutral-500">{project.desc}</p>
+                </div>
+                <span className="border border-neutral-200 px-4 py-1 rounded-full text-sm font-medium">
+                  {project.category}
+                </span>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="w-full py-10 border-t border-white/10 text-center text-gray-500 text-sm">
-        <p>© {new Date().getFullYear()} Leoš Gjumija. Všechna práva vyhrazena.</p>
-        <p className="mt-2">Brno, Czech Republic</p>
+      {/* 5. REFERENCE (Minimal Grid) */}
+      <section id="references" className="bg-neutral-50 py-24">
+        <div className="px-6 max-w-6xl mx-auto w-full">
+          <h2 className="text-2xl font-semibold tracking-tight mb-12">Co říkají klienti</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {references.map((ref) => (
+              <div key={ref.id} className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <p className="text-lg leading-relaxed mb-6">"{ref.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-neutral-200 rounded-full flex items-center justify-center font-bold text-neutral-500">
+                    {ref.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-bold text-sm">{ref.name}</p>
+                    <p className="text-xs text-neutral-400 uppercase tracking-wider">{ref.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. KONTAKT & FOOTER */}
+      <footer id="contact" className="bg-white py-24 px-6 border-t border-neutral-100">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8">
+            Máte projekt?
+          </h2>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-16">
+            <a 
+              href="mailto:info@gjumija.cz" 
+              className="bg-black text-white px-8 py-4 rounded-full font-medium hover:scale-105 transition-transform duration-300"
+            >
+              Napsat e-mail
+            </a>
+            <a 
+              href="https://instagram.com/gjumija.photos" 
+              className="bg-neutral-100 text-black px-8 py-4 rounded-full font-medium hover:bg-neutral-200 transition-colors"
+            >
+              Napsat na Instagramu
+            </a>
+          </div>
+          
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-neutral-400 pt-8 border-t border-neutral-100">
+            <p>© {new Date().getFullYear()} Leoš Gjumija</p>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <Link href="#">Privacy</Link>
+              <Link href="#">Terms</Link>
+            </div>
+          </div>
+        </div>
       </footer>
     </main>
   );
