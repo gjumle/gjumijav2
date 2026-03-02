@@ -33,7 +33,6 @@ const projects: Project[] = [
       "Série pro juracars.cz — po kliknutí se otevře galerie celé série.",
     mainImage: "/juracars/bmw-x3-m/main.jpg",
     gallery: [
-      "/juracars/bmw-x3-m/01.jpg",
       "/juracars/bmw-x3-m/02.jpg",
       "/juracars/bmw-x3-m/03.jpg",
       "/juracars/bmw-x3-m/04.jpg",
