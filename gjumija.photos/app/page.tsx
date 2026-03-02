@@ -15,7 +15,7 @@ const projects = [
     id: 1,
     title: "Night Drive Brno",
     category: "Automotive",
-    description: "Náhled bere fotku z posledního IG postu (po vložení URL).",
+    description: "BMW X3 M Competition nad brněnským okruhem",
     status: "coming-soon",
     previewImage: "https://unsplash.com/photos/_og9SK4nZwo",
   },
@@ -202,4 +202,4 @@ export default function Home() {
       </div>
     </main>
   );
-}
+}
