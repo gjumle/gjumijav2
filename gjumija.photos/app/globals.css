@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white text-neutral-900 antialiased;
+  background-color: #ffffff;
+  color: #171717; /* Neutral-900 */
 }
 
-/* Skryje scrollbar, ale zachová funkčnost (pro horizontální scrollování projektů) */
+/* Skrytí posuvníku pro čistý vzhled */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

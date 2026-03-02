@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Povolení externích obrázků
   images: {
     remotePatterns: [
       {
@@ -8,7 +9,8 @@ const nextConfig = {
       },
     ],
   },
-  // Toto ignoruje drobné chyby při buildu (TypeScript a ESLint), aby se web nasadil i tak
+  // DŮLEŽITÉ: Ignorování chyb při buildu (TypeScript a ESLint)
+  // Toto zajistí, že se web nasadí, i když kód není "dokonalý"
   typescript: {
     ignoreBuildErrors: true,
   },
