@@ -4,14 +4,5 @@
 
 body {
   background-color: #ffffff;
-  color: #171717; /* Neutral-900 */
-}
-
-/* Skrytí posuvníku pro čistý vzhled */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  color: #000000;
 }
