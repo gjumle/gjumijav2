@@ -17,7 +17,7 @@ const projects = [
     category: "Automotive",
     description: "BMW X3 M Competition nad brněnským okruhem",
     status: "coming-soon",
-    previewImage: "https://unsplash.com/photos/_og9SK4nZwo",
+    previewImage: automotivePreviewImageUrl,
   },
   {
     id: 2,
@@ -87,7 +87,7 @@ export default function Home() {
               Fotograf • Brno
             </p>
             <h1 className="mb-6 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-              Clean. Round.
+              Clean. New.
               <br />
               Contrast. Strict.
             </h1>
