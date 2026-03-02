@@ -30,14 +30,15 @@ const projects: Project[] = [
     client: "juracars.cz",
     clientInstagram: "https://instagram.com/juracars",
     description:
-      "Série pro juracars.cz — po kliknutí se otevře galerie celé série. Fotky načítám z public/images/juracars.",
-    mainImage: "/images/juracars/hlavni_fotka.jpg",
+      "Série pro juracars.cz — po kliknutí se otevře galerie celé série.",
+    mainImage: "/juracars/bmw-x3-m/main.jpg",
     gallery: [
-      "/images/juracars/fotka_1.jpg",
-      "/images/juracars/fotka_2.jpg",
-      "/images/juracars/fotka_3.jpg",
-      "/images/juracars/fotka_4.jpg",
-      "/images/juracars/fotka_5.jpg",
+      "/juracars/bmw-x3-m/01.jpg",
+      "/juracars/bmw-x3-m/02.jpg",
+      "/juracars/bmw-x3-m/03.jpg",
+      "/juracars/bmw-x3-m/04.jpg",
+      "/juracars/bmw-x3-m/05.jpg",
+      "/juracars/bmw-x3-m/06.jpg",
     ],
   },
   {
