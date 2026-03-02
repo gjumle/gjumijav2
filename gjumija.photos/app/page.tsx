@@ -1,161 +1,224 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const latestShots = [
+  {
+    id: 1,
+    src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop",
+    alt: "Lifestyle portrét v ulicích Brna",
+    tag: "Lifestyle",
+  },
+  {
+    id: 2,
+    src: "https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1200&auto=format&fit=crop",
+    alt: "Automotive focení ve večerním městě",
+    tag: "Automotive",
+  },
+  {
+    id: 3,
+    src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200&auto=format&fit=crop",
+    alt: "Nature fotografie s jelenem v lese",
+    tag: "Nature",
+  },
+  {
+    id: 4,
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+    alt: "Lifestyle detail a přirozené světlo",
+    tag: "Lifestyle",
+  },
+];
+
+const projects = [
+  {
+    id: 1,
+    title: "Night Drive Brno",
+    category: "Automotive",
+    description:
+      "Série nočních fotografií pro lokální detailing studio. Cíl: prémiový look, kontrastní světlo, čistá kompozice.",
+    image:
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    title: "City Stories",
+    category: "Lifestyle",
+    description:
+      "Obsah pro IG kampaň módní značky. Fotky stavěné na autenticitě, jednoduchých barvách a emocích.",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    title: "Moravian Quiet",
+    category: "Nature",
+    description:
+      "Kolekce ranních a večerních záběrů z okolí Brna. Důraz na klid, prostor a atmosféru krajiny.",
+    image:
+      "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=1600&auto=format&fit=crop",
+  },
+];
+
+const references = [
+  {
+    id: 1,
+    name: "Markéta V.",
+    role: "Brand Manager, Local Wear",
+    text: "Leoš dodal přesně to, co jsme chtěli: čisté vizuály, konzistentní styl a profesionální komunikaci od briefu po finální export.",
+  },
+  {
+    id: 2,
+    name: "Jakub R.",
+    role: "Founder, BRN Garage",
+    text: "Automotive série měla okamžitě odezvu. Fotky mají charakter, technicky sedí a perfektně fungují na Instagramu i webu.",
+  },
+  {
+    id: 3,
+    name: "Tereza N.",
+    role: "Content Creator",
+    text: "Skvěle vedené focení, příjemná atmosféra a výsledek, který působí přirozeně, ale zároveň velmi prémiově.",
+  },
+];
+
 export default function Home() {
-  
-  // DATA (Přímo v komponentě, aby to nedělalo problémy s typy)
-  const instagramPosts = [
-    { id: 1, src: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=800&auto=format&fit=crop", alt: "Automotive shot" },
-    { id: 2, src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop", alt: "Lifestyle portrait" },
-    { id: 3, src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=800&auto=format&fit=crop", alt: "Nature vibes" },
-    { id: 4, src: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop", alt: "Car detail" },
-  ];
-
-  const projects = [
-    { 
-      id: 1, 
-      title: "Midnight Run", 
-      category: "Automotive", 
-      desc: "Noční Brno a BMW M4.",
-      image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1200&auto=format&fit=crop" 
-    },
-    { 
-      id: 2, 
-      title: "Summer Collection", 
-      category: "Lifestyle", 
-      desc: "Editorial pro módní značku.",
-      image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" 
-    },
-  ];
-
-  const references = [
-    { id: 1, name: "Petr Novák", text: "Profesionální přístup a fotky, které mají atmosféru. Doporučuji." },
-    { id: 2, name: "Anna Dvořáková", text: "Leoš přesně vystihl mood, který jsme pro kampaň potřebovali." },
-  ];
-
   return (
-    <main className="min-h-screen flex flex-col font-sans">
-      
-      {/* 1. NAVIGACE */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-neutral-100">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="font-bold text-xl tracking-tight hover:opacity-70 transition-opacity">
-            gjumija.photos
-          </Link>
-          
-          <div className="hidden md:flex gap-8 text-sm font-medium text-neutral-500">
-            <Link href="#projects" className="hover:text-black transition-colors">Projekty</Link>
-            <Link href="#references" className="hover:text-black transition-colors">Reference</Link>
+    <main className="bg-neutral-950 text-neutral-50">
+      <div className="mx-auto min-h-screen w-full max-w-6xl px-6 pb-16 pt-8 md:pt-10">
+        <header className="sticky top-4 z-50 mb-14 rounded-full border border-white/15 bg-neutral-900/85 px-6 py-4 backdrop-blur">
+          <div className="flex items-center justify-between gap-4">
+            <Link href="/" className="text-sm font-semibold tracking-[0.2em] uppercase">
+              gjumija.photos
+            </Link>
+            <nav className="hidden items-center gap-8 text-sm text-neutral-300 md:flex">
+              <Link href="#projekty" className="transition hover:text-white">
+                Projekty
+              </Link>
+              <Link href="#reference" className="transition hover:text-white">
+                Reference
+              </Link>
+              <Link href="#kontakt" className="transition hover:text-white">
+                Kontakt
+              </Link>
+            </nav>
+            <Link
+              href="https://instagram.com/gjumija.photos"
+              target="_blank"
+              className="rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-black transition hover:bg-neutral-200"
+            >
+              Instagram
+            </Link>
           </div>
+        </header>
 
-          <Link 
-            href="https://instagram.com/gjumija.photos" 
-            target="_blank"
-            className="bg-black text-white text-xs px-5 py-2.5 rounded-full font-medium hover:bg-neutral-800 transition-colors"
-          >
-            Instagram
-          </Link>
-        </div>
-      </nav>
+        <section className="mb-16 grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-900 p-8 md:grid-cols-[1.2fr_0.8fr] md:p-12">
+          <div>
+            <p className="mb-5 inline-flex rounded-full border border-white/20 px-4 py-1 text-xs font-medium uppercase tracking-[0.2em] text-neutral-300">
+              Fotograf • Brno
+            </p>
+            <h1 className="mb-6 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+              Clean. Round.
+              <br />
+              Contrast. Strict.
+            </h1>
+            <p className="max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">
+              Jmenuju se Leoš Gjumija a tvořím fotografie pro značky i jednotlivce.
+              Specializuju se na lifestyle, automotive a nature obsah s důrazem na čistotu,
+              geometrii a výrazný kontrast.
+            </p>
+          </div>
+          <div className="rounded-[2rem] border border-white/15 bg-gradient-to-br from-neutral-800 to-neutral-950 p-6">
+            <p className="mb-4 text-xs uppercase tracking-[0.2em] text-neutral-400">Focus</p>
+            <ul className="space-y-3 text-sm text-neutral-200">
+              <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Lifestyle kampaně a osobní branding</li>
+              <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Automotive focení (cars, detail, motion)</li>
+              <li className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Nature série a travel vizuály</li>
+            </ul>
+          </div>
+        </section>
 
-      {/* 2. HERO SEKCE */}
-      <section className="pt-40 pb-20 px-6 max-w-6xl mx-auto w-full">
-        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[1] mb-8 text-neutral-900">
-          Visuals.<br />
-          Automotive.<br />
-          Lifestyle.
-        </h1>
-        <p className="text-xl text-neutral-500 max-w-lg leading-relaxed">
-          Jsem Leoš Gjumija. Fotograf z Brna. 
-          Tvořím vizuální obsah s důrazem na čistotu a atmosféru.
-        </p>
-      </section>
-
-      {/* 3. SHOTS (Instagram Grid) */}
-      <section className="px-6 max-w-6xl mx-auto w-full mb-32">
-        <div className="flex justify-between items-end mb-8">
-          <h2 className="text-xl font-semibold tracking-tight">Latest Shots</h2>
-          <Link href="https://instagram.com/gjumija.photos" className="text-sm text-neutral-400 hover:text-black transition-colors">
-            Zobrazit více ↗
-          </Link>
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {instagramPosts.map((post) => (
-            <div key={post.id} className="aspect-square relative overflow-hidden rounded-2xl bg-neutral-100 group">
-              <Image
-                src={post.src}
-                alt={post.alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, 25vw"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. PROJEKTY */}
-      <section id="projects" className="px-6 max-w-6xl mx-auto w-full mb-32">
-        <h2 className="text-xl font-semibold tracking-tight mb-8">Vybrané projekty</h2>
-        
-        <div className="space-y-16">
-          {projects.map((project) => (
-            <div key={project.id} className="group cursor-pointer">
-              <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-[2rem] bg-neutral-100 mb-6 shadow-sm">
+        <section className="mb-16">
+          <div className="mb-6 flex items-end justify-between">
+            <h2 className="text-xl font-semibold tracking-tight">Latest IG Shots</h2>
+            <Link
+              href="https://instagram.com/gjumija.photos"
+              target="_blank"
+              className="text-sm text-neutral-400 transition hover:text-white"
+            >
+              Zobrazit profil ↗
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {latestShots.map((shot) => (
+              <div key={shot.id} className="group relative aspect-square overflow-hidden rounded-[1.6rem] border border-white/10 bg-neutral-900">
                 <Image
-                  src={project.image}
-                  alt={project.title}
+                  src={shot.src}
+                  alt={shot.alt}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
                 />
-              </div>
-              <div className="flex justify-between items-start px-2">
-                <div>
-                  <h3 className="text-2xl font-bold tracking-tight mb-1">{project.title}</h3>
-                  <p className="text-neutral-500">{project.desc}</p>
-                </div>
-                <span className="border border-neutral-200 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
-                  {project.category}
+                <span className="absolute bottom-3 left-3 rounded-full border border-white/30 bg-black/55 px-3 py-1 text-xs uppercase tracking-[0.15em]">
+                  {shot.tag}
                 </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. REFERENCE */}
-      <section id="references" className="bg-neutral-50 py-24 border-y border-neutral-100">
-        <div className="px-6 max-w-6xl mx-auto w-full">
-          <h2 className="text-xl font-semibold tracking-tight mb-12">Reference</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {references.map((ref) => (
-              <div key={ref.id} className="bg-white p-8 rounded-3xl shadow-sm border border-neutral-100">
-                <p className="text-lg leading-relaxed mb-6 font-medium">"{ref.text}"</p>
-                <p className="text-sm text-neutral-400 font-bold uppercase tracking-wider">{ref.name}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 6. FOOTER */}
-      <footer className="bg-white py-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-8">
-            Pojďme tvořit.
-          </h2>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
-            <Link 
-              href="mailto:info@gjumija.cz" 
-              className="bg-black text-white px-8 py-4 rounded-full font-medium hover:scale-105 transition-transform duration-300"
-            >
+        <section id="projekty" className="mb-16">
+          <h2 className="mb-6 text-xl font-semibold tracking-tight">Vybrané projekty</h2>
+          <div className="space-y-10">
+            {projects.map((project) => (
+              <article key={project.id} className="overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900">
+                <div className="relative aspect-[16/9] w-full">
+                  <Image src={project.image} alt={project.title} fill className="object-cover" sizes="100vw" />
+                </div>
+                <div className="flex flex-col gap-4 p-6 md:flex-row md:items-start md:justify-between md:p-8">
+                  <div className="max-w-2xl">
+                    <h3 className="mb-2 text-2xl font-semibold tracking-tight">{project.title}</h3>
+                    <p className="text-neutral-300">{project.description}</p>
+                  </div>
+                  <span className="inline-flex rounded-full border border-white/20 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-neutral-200">
+                    {project.category}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="reference" className="mb-16 rounded-[2rem] border border-white/10 bg-neutral-900 p-6 md:p-10">
+          <h2 className="mb-8 text-xl font-semibold tracking-tight">Reference</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {references.map((reference) => (
+              <article key={reference.id} className="rounded-3xl border border-white/10 bg-black/25 p-5">
+                <p className="mb-4 text-sm leading-relaxed text-neutral-200">“{reference.text}”</p>
+                <p className="text-sm font-semibold">{reference.name}</p>
+                <p className="text-xs uppercase tracking-[0.16em] text-neutral-400">{reference.role}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <footer id="kontakt" className="rounded-[2rem] border border-white/10 bg-white p-8 text-black md:p-10">
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-neutral-500">Kontakt</p>
+          <h2 className="mb-4 text-3xl font-semibold tracking-tight md:text-4xl">Pojďme nafotit váš další projekt.</h2>
+          <p className="mb-6 max-w-xl text-neutral-700">
+            Pokud chcete fresh obsah na Instagram, web nebo kampaň, napište mi a připravíme koncept i realizaci.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="mailto:info@gjumija.cz" className="rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white">
               Napsat e-mail
             </Link>
+            <Link
+              href="https://instagram.com/gjumija.photos"
+              target="_blank"
+              className="rounded-full border border-black/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em]"
+            >
+              DM na Instagramu
+            </Link>
           </div>
-          <p className="text-sm text-neutral-400">© 2024 Leoš Gjumija. Brno.</p>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </main>
   );
 }
